@@ -25,7 +25,15 @@ export class AlbumDetailComponent implements OnInit {
 
  });
   this.albumToDisplay = this.albumService.getAlbumById(this.albumId);
+  console.log(this.albumToDisplay);
   // this.albumToDisplay =  this.albums;
+
+  this.albumService.getAlbumById(this.albumId).subscribe(dataLastEmittedFromObserver => {
+     this.albumToDisplay = new Album(dataLastEmittedFromObserver.title,
+                                      dataLastEmittedFromObserver.artist,
+                                      dataLastEmittedFromObserver.description)
+   })
+
   }
 
   goToMarketPlace() {
